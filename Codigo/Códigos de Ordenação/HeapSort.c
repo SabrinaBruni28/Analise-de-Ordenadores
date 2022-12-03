@@ -24,8 +24,8 @@ void Refaz(int Esq, int Dir, Item *A){
 }
 
 
-void Heapsort(Item *A, Indice *n){ 
-    Indice Esq, Dir;
+void Heapsort(Item *A, int *n){ 
+    int Esq, Dir;
     Item aux;
     Constroi(A, n); /* constroi o heap */
     Esq = 1; 
