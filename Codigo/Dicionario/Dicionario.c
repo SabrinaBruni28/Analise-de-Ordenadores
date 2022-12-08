@@ -39,30 +39,37 @@ void Imprime_Lista(Dicionario* dic, char letra, int n){
 void Imprime_Dicionario(Dicionario* dic, int c, int n){
     if(dic->tam == 0) printf("@@@@ Dicionario Vazio @@@@\n");
     int i;
-    for(i = 0; i < dic->tam; i++){
-        switch (c){
+    switch (c){
         case 1:
+        for(i = 0; i < dic->tam; i++)
             Print_Lista(&(dic->dicionario[i]), n, 0);
             break;
         case 2:
+        for(i = 0; i < dic->tam; i++)
             Bolha(dic->dicionario[i], n);
             break;
         case 3:
+        for(i = 0; i < dic->tam; i++)
             BolhaMelhorado(dic->dicionario[i], n);
             break;
         case 4:
+        for(i = 0; i < dic->tam; i++)
             Selecao(dic->dicionario[i], n);
             break;
         case 5:
+        for(i = 0; i < dic->tam; i++)
             Insercao(dic->dicionario[i], n);
             break;
         case 6:
+        for(i = 0; i < dic->tam; i++)
             Shellsort(dic->dicionario[i], n);
             break;
         case 7:
+        for(i = 0; i < dic->tam; i++)
             QuickSort(dic->dicionario[i], n);
             break;
         case 8:
+        for(i = 0; i < dic->tam; i++)
             Heapsort(&(dic->dicionario[i]), n);
             break;
         }
