@@ -12,7 +12,7 @@ char* Get_palavra(Palavra* palav){
     return palav->palavra;
 }
 void Print_palavra(Palavra* palav){
-    printf("Palavra: %s\n",palav->palavra);
+    printf("Palavra: %s\n", palav->palavra);
 }
 void Print_Palavra(Palavra* palav){
     printf("Palavra: %s \n", palav->palavra);

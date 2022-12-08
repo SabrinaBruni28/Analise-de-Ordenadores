@@ -33,15 +33,39 @@ void Imprime_Lista(Dicionario* dic, char letra, int n){
     int i = Verifica_Dicionario(dic, letra);
     if(i == -1) printf("@@@@ Nao existe palavra com essa letra no Dicionario @@@@\n");
     else{
-        printf("#Palavras com a letra %c:\n",letra);
-        Print_Lista(&(dic->dicionario[i]), n);
+        Ordenacao(&(dic->dicionario[i]), n);
     }
 }
-void Imprime_Dicionario(Dicionario* dic, int n){
+void Imprime_Dicionario(Dicionario* dic, int c, int n){
     if(dic->tam == 0) printf("@@@@ Dicionario Vazio @@@@\n");
     int i;
     for(i = 0; i < dic->tam; i++){
-        Print_Lista(&(dic->dicionario[i]), n);
+        switch (c){
+        case 1:
+            Print_Lista(&(dic->dicionario[i]), n, 0);
+            break;
+        case 2:
+            Bolha(dic->dicionario[i], n);
+            break;
+        case 3:
+            BolhaMelhorado(dic->dicionario[i], n);
+            break;
+        case 4:
+            Selecao(dic->dicionario[i], n);
+            break;
+        case 5:
+            Insercao(dic->dicionario[i], n);
+            break;
+        case 6:
+            Shellsort(dic->dicionario[i], n);
+            break;
+        case 7:
+            QuickSort(dic->dicionario[i], n);
+            break;
+        case 8:
+            Heapsort(&(dic->dicionario[i]), n);
+            break;
+        }
     }
 }
 
@@ -85,4 +109,10 @@ void Ordena_Dicionario(Dicionario* dic){
         }
         dic->dicionario[j + 1] = aux;
     }
+}
+void Ordenacao_Dicionario(Dicionario* dic, int n){
+    int i, c;
+    printf("\n[1]-Nao Ordenado\n[2]-Ordenacao Bolha\n[3]-Ordenacao Bolha Melhorado\n[4]-Ordenacao Selecao\n[5]-Ordenacao Insercao\n[6]-Ordenacao Shell\n[7]-Ordenacao Quick\n[8]-Ordenacao Heap\n");
+    scanf("%d", &c);
+    Imprime_Dicionario(dic, c, n);
 }

@@ -70,7 +70,7 @@ int main(){
             //Mostra todas as palavras do dicionario//
             case 2:
                 n = Opcoes3();
-                Imprime_Dicionario(&dicionario, n);
+                Ordenacao_Dicionario(&dicionario, n);
                 break;
             //Mostra todas as palavras que comecam com uma letra especifica//
             case 3:
@@ -115,7 +115,7 @@ int main(){
                 break;
             //Mostra a quantidade de palavras do dicioanrio//
             case 8:
-                printf("# Quantidade de palavras no dicionario: %d",Tamanho_Dicionario(&dicionario));
+                printf("\n# Quantidade de palavras no dicionario: %d\n",Tamanho_Dicionario(&dicionario));
                  break;
             //Sai do dicionario//
             case 9:
