@@ -1,5 +1,6 @@
 #include <time.h>
 #include "lista_palavra.h"
+int comp, mov;
 
 void Cria_Lista_Palavra(Lista_Palavra* listpalav){
     listpalav->tam = 0;
@@ -65,7 +66,8 @@ void Print_Lista(Lista_Palavra* listpalav, int n, int j){
     }
 }
 void Bolha (Lista_Palavra list, int n){
-    int comp = 0, mov = 0;
+    comp = 0;
+    mov = 0;
     clock_t init_t, final_t;
 
     init_t = clock();
@@ -92,7 +94,8 @@ void Bolha (Lista_Palavra list, int n){
             );
 }
 void BolhaMelhorado (Lista_Palavra list, int n){
-    int comp = 0, mov = 0;
+    comp = 0;
+    mov = 0;
     clock_t init_t, final_t;
 
     init_t = clock();
@@ -124,7 +127,8 @@ void BolhaMelhorado (Lista_Palavra list, int n){
 }
 
 void Selecao (Lista_Palavra list, int n){
-    int comp = 0, mov = 0;
+    comp = 0;
+    mov = 0;
     clock_t init_t, final_t;
 
     init_t = clock();
@@ -153,7 +157,8 @@ void Selecao (Lista_Palavra list, int n){
 }
 
 void Insercao (Lista_Palavra list, int n ){
-    int comp = 0, mov = 0;
+    comp = 0; 
+    mov = 0;
     clock_t init_t, final_t;
 
     init_t = clock();
@@ -180,7 +185,8 @@ void Insercao (Lista_Palavra list, int n ){
             );
 }
 void Shellsort (Lista_Palavra list, int n){
-    int comp = 0, mov = 0;
+    comp = 0;
+    mov = 0;
     clock_t init_t, final_t;
 
     init_t = clock();
@@ -213,75 +219,72 @@ void Shellsort (Lista_Palavra list, int n){
             comp, mov, (double)(final_t - init_t)/CLOCKS_PER_SEC
             );
 }
-
-void Particao(int Esq, int Dir, int *i, int *j, Lista_Palavra *lista, int *comp, int *mov){
+void Particao(int Esq, int Dir, int *i, int *j, Lista_Palavra *lista){
     Palavra pivo, aux;
     *i = Esq; *j = Dir;
     strcpy(pivo.palavra, lista->lista[(*i + *j)/2].palavra); /* obtem o pivo x */
     do{
         while (strcmp(pivo.palavra, lista->lista[*i].palavra) > 0){
             (*i)++;
-            *comp++;
+            comp++;
         }
-        *comp++;
+        comp++;
         while (strcmp(pivo.palavra, lista->lista[*j].palavra) < 0){
             (*j)--;
-            *comp++;
+            comp++;
         }
-        *comp++;
+        comp++;
         if (*i <= *j){
             strcpy(aux.palavra, lista->lista[*i].palavra);
             strcpy(lista->lista[*i].palavra, lista->lista[*j].palavra);
             strcpy(lista->lista[*j].palavra, aux.palavra);
-            *mov++;
+            mov++;
             (*i)++; 
             (*j)--;
         }
     } while (*i <= *j);
 }
-
-void Ordena(int Esq, int Dir, Lista_Palavra *lista, int *comp, int *mov){
+void Ordena(int Esq, int Dir, Lista_Palavra *lista){
     int i,j;
-    Particao(Esq, Dir, &i, &j, lista, comp, mov);
+    Particao(Esq, Dir, &i, &j, lista);
     if (Esq < j) 
-        Ordena(Esq, j, lista, comp, mov);
+        Ordena(Esq, j, lista);
     if (i < Dir) 
-        Ordena(i, Dir, lista, comp, mov);
+        Ordena(i, Dir, lista);
 }
 
 void QuickSort(Lista_Palavra list, int n){
-    int comp = 0, mov = 0;
+    comp = 0; 
+    mov = 0;
     clock_t init_t, final_t;
 
     init_t = clock();
     Lista_Palavra lista;
     lista = list;
-    Ordena(0, lista.tam -1, &lista, &comp, &mov);
+    Ordena(0, lista.tam -1, &lista);
     final_t = clock();
     Print_Lista(&lista, n, 0);
-    printf("\nNumero de comparacoes: %d\nNumero de movimentacoes: %d\nTempo: %lf\n",
-            comp, mov, (double)(final_t - init_t)/CLOCKS_PER_SEC
-            );
+    printf("\nNumero de comparacoes: %d\nNumero de movimentacoes: %d\nTempo: %lf\n", comp, mov, (double)(final_t - init_t)/CLOCKS_PER_SEC);
 }
 
-void Constroi(Lista_Palavra* lista, int *n, int *comp, int *mov){
+void Constroi(Lista_Palavra* lista, int *n){
     int Esq;
     Esq = *n / 2 + 1;
     while (Esq > 1){
         Esq--;
-        Refaz(Esq, *n, lista, comp, mov);
+        Refaz(Esq, *n, lista);
     }
 }
 
-void Refaz(int Esq, int Dir, Lista_Palavra* lista, int *comp, int *mov){
+void Refaz(int Esq, int Dir, Lista_Palavra* lista){
     int j = Esq * 2;
     Palavra aux;
     strcpy(aux.palavra, lista->lista[Esq].palavra);
     while (j <= Dir){
         if ((j < Dir)&&(strcmp(lista->lista[j].palavra, lista->lista[j+1].palavra) < 0)) 
             j++;
-        if(j < Dir) *comp++;
-        *comp++;
+        if(j < Dir) comp++;
+        comp++;
         if (strcmp(aux.palavra, lista->lista[j].palavra) >= 0) 
             break;
         strcpy(lista->lista[Esq].palavra, lista->lista[j].palavra);
@@ -289,11 +292,12 @@ void Refaz(int Esq, int Dir, Lista_Palavra* lista, int *comp, int *mov){
         j = Esq * 2;
     }
     strcpy(lista->lista[Esq].palavra, aux.palavra);
-    *mov++;
+    mov++;
 }
 
 void Heapsort(Lista_Palavra* list, int n){ 
-    int comp = 0, mov = 0;
+    comp = 0; 
+    mov = 0;
     clock_t init_t, final_t;
 
     init_t = clock();
@@ -306,7 +310,7 @@ void Heapsort(Lista_Palavra* list, int n){
         lista.lista[lista.tam] = list->lista[i];
     }
     N = lista.tam;
-    Constroi(&lista, &N, &comp, &mov); /* constroi o heap */
+    Constroi(&lista, &N); /* constroi o heap */
     Esq = 1; 
     Dir = N;
     while (Dir > 1){ /* ordena o vetor */
@@ -315,7 +319,7 @@ void Heapsort(Lista_Palavra* list, int n){
         strcpy(lista.lista[1].palavra, lista.lista[Dir].palavra);
         strcpy(lista.lista[Dir].palavra, aux.palavra);
         Dir--;
-        Refaz(Esq, Dir, &lista, &comp, &mov);
+        Refaz(Esq, Dir, &lista);
     }
     lista.tam++;
     final_t = clock();

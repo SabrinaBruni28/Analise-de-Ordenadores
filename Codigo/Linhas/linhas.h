@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define TAMLIST 100
+#define TAMLIST 200
 
 typedef struct{
     int linha[TAMLIST];

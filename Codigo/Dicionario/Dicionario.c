@@ -38,41 +38,41 @@ void Imprime_Lista(Dicionario* dic, char letra, int n){
 }
 void Imprime_Dicionario(Dicionario* dic, int c, int n){
     if(dic->tam == 0) printf("@@@@ Dicionario Vazio @@@@\n");
-    int i;
-    switch (c){
-        case 1:
-        for(i = 0; i < dic->tam; i++)
-            Print_Lista(&(dic->dicionario[i]), n, 0);
-            break;
-        case 2:
-        for(i = 0; i < dic->tam; i++)
-            Bolha(dic->dicionario[i], n);
-            break;
-        case 3:
-        for(i = 0; i < dic->tam; i++)
-            BolhaMelhorado(dic->dicionario[i], n);
-            break;
-        case 4:
-        for(i = 0; i < dic->tam; i++)
-            Selecao(dic->dicionario[i], n);
-            break;
-        case 5:
-        for(i = 0; i < dic->tam; i++)
-            Insercao(dic->dicionario[i], n);
-            break;
-        case 6:
-        for(i = 0; i < dic->tam; i++)
-            Shellsort(dic->dicionario[i], n);
-            break;
-        case 7:
-        for(i = 0; i < dic->tam; i++)
-            QuickSort(dic->dicionario[i], n);
-            break;
-        case 8:
-        for(i = 0; i < dic->tam; i++)
-            Heapsort(&(dic->dicionario[i]), n);
-            break;
+    int i, j, k = 0;
+    
+    Lista_Palavra aux;
+    Cria_Lista_Palavra(&aux);
+    for(i = 0; i < dic->tam; i++)
+        for(j = 0; j < dic->dicionario[i].tam; j++){
+            aux.lista[k] = dic->dicionario[i].lista[j];
+            k++;
+            aux.tam++;
         }
+    switch (c){
+    case 1:
+        Print_Lista(&aux, n, 0);
+        break;
+    case 2:
+        Bolha(aux, n);
+        break;
+    case 3:
+        BolhaMelhorado(aux, n);
+        break;
+    case 4:
+        Selecao(aux, n);
+        break;
+    case 5:
+        Insercao(aux, n);
+        break;
+    case 6:
+        Shellsort(aux, n);
+        break;
+    case 7:
+        QuickSort(aux, n);
+        break;
+    case 8:
+        Heapsort(&aux, n);
+        break;
     }
 }
 
