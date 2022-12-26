@@ -1,6 +1,6 @@
 # Trabalho-Pratico-3---AEDS1
 
-##UPDATE NO TAD DICIONÁRIO
+### UPDATE NO TAD DICIONÁRIO
 
 Neste trabalho vamos exercitar os algoritmos de ordenação estudados em sala de aula. Para isso,
 utilizaremos a implementação do TAD Dicionário desenvolvido por vocês no Trabalho Prático 01 (TP01).
@@ -41,7 +41,7 @@ Para cada chamada às operações que exibem uma lista de palavras por letra ord
 dicionário ordenado, deverá ser exibido ao usuário o número de comparações feitas, o número
 de movimentações realizadas e o tempo total gasto com a operação.
 
-##TESTES
+### TESTES
 
 Dois arquivos texto serão disponibilizados para os alunos para realização de testes durante o
 desenvolvimento. Além desse, um outro arquivo será utilizado no dia das entrevistas para avaliação dos
